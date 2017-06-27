@@ -5,7 +5,6 @@
                          :data => {:confirm => "Are you sure?",
                          :method => "delete"} %>
 
-
 <ul>
   <% @post.comments.each do |subcomment| %>
     <% if subcomment.reply_id == comment.id %>

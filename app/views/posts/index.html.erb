@@ -3,9 +3,10 @@
 <ol>
   <% @posts.each do |post| %>
     <li>
+      <%= button_to '+1', post_upvote_path(post), method: :post  %>
+      <%= post.score  %> |
       <%= link_to post.title, post.content %> |
       <%= link_to "comments", post_path(post) %>
-      <!-- <a href="<%= post.content %>">LINK YO</a> -->
     </li>
   <% end %>
 </ol>

@@ -6,9 +6,7 @@
     <% @post.comments.each do |comment| %>
       <% if comment.reply_id === 0 %>
         <li>
-          
           <%= render partial: "comments", locals: {comment: comment} %>
-
         </li>
       <% end %>
     <% end %>
@@ -17,7 +15,7 @@
 <% else %>
   <p>There are no comments on this post yet.</p>
 <% end %>
-<!-- pass -1 to void comment relationship -->
+
 <p><%= link_to "Add a comment", new_post_comment_path(@post) %></p>
 <p><%= link_to "Return to posts", posts_path %></p>
 

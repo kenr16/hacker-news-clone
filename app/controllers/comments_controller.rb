@@ -44,19 +44,6 @@ class CommentsController < ApplicationController
     @comment.reply_id = @oldComment.id
   end
 
-  # def post_reply
-  #   @post = Post.find(params[:post_id])
-  #   @originalComment = Comment.find(params[:comment_id])
-  #   puts @originalComment
-  #   comment = Comment.new(comment_params)
-  #   comment.reply_id = @originalComment.id;
-  #   if comment.save
-  #     redirect_to post_path(@originalComment.post)
-  #   else
-  #     render :reply
-  #   end
-  # end
-
 private
   def comment_params
     params.require(:comment).permit(:author, :text, :reply_id)

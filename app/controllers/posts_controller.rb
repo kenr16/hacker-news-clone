@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    filtered_posts = Post.all.sort_by.sort { |a, b| b.score <=> a.score }
+    @posts = filtered_posts
   end
 
   def show
@@ -13,6 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.score = 0;
     if @post.save
       redirect_to posts_path
     else
@@ -36,6 +38,15 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    redirect_to posts_path
+  end
+
+  def upvote
+    @post = Post.find(params[:post_id])
+    new_score = @post.score += 1
+    @post.update(score: new_score)
+    puts("********************************************")
+    puts(@post.score)
     redirect_to posts_path
   end
 
