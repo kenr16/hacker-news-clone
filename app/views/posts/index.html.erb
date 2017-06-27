@@ -1,6 +1,6 @@
 <h1>Posts</h1>
 
-<ul>
+<ol>
   <% @posts.each do |post| %>
     <li>
       <%= link_to post.title, post.content %> |
@@ -8,6 +8,6 @@
       <!-- <a href="<%= post.content %>">LINK YO</a> -->
     </li>
   <% end %>
-</ul>
+</ol>
 
 <%= link_to "New Post", new_post_path %>

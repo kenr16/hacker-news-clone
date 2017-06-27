@@ -1,0 +1,17 @@
+<%= comment.text %> |
+<%= link_to "Reply", post_comment_reply_path(@post, comment) %> |
+<%= link_to "Edit", edit_post_comment_path(@post, comment) %> |
+<%= link_to "Delete", post_comment_path(@post, comment),
+                         :data => {:confirm => "Are you sure?",
+                         :method => "delete"} %>
+
+
+<ul>
+  <% @post.comments.each do |subcomment| %>
+    <% if subcomment.reply_id == comment.id %>
+      <li>
+        <%= render partial: "comments", locals: {comment: subcomment} %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
