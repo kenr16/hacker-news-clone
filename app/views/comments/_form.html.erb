@@ -5,5 +5,8 @@
   <%= f.text_field :author %>
   <%= f.label :text %>
   <%= f.text_field :text %>
+  <% if @oldComment != nil %>
+    <%= f.hidden_field :reply_id, :value => @oldComment.id %>
+  <% end %>
   <p><%= f.submit %></p>
 <% end %>
